@@ -1,3 +1,5 @@
+// Hi grader, sorry it's a bit of a mess, I plan to come back and fix it later, got a little too hung up on making some of the js work that I neglected styling.
+
 // ensure all html elements have loaded before executing JavaScript
 $(document).ready(function () {
   var searchForm = $("#search-form");
@@ -5,6 +7,7 @@ $(document).ready(function () {
   var currentWeather = $("#current-weather");
   var fiveDay = $("#five-day");
   var cityNameInput = $("#city-input");
+  var cardHeader = $(".card-header");
 
   // handles search submission and runs function to convert name to coordinates
   searchForm.on("submit", function (event) {
@@ -29,6 +32,7 @@ $(document).ready(function () {
           cityLon = data[0].lon;
           getCurrentWeather(cityLat, cityLon, cityName);
           getFiveDay();
+          localStorage.setItem(cityName, JSON.stringify(cityName));
         });
       } else {
         alert("Error: " + response.statusText);
@@ -131,7 +135,7 @@ $(document).ready(function () {
             console.log(fiveDayData[i]);
             // create div for each day for styling
             let dayDiv = $("<div>");
-            dayDiv.addClass("day-div");
+            dayDiv.addClass("card-content");
 
             // create elements for each property in five day forecast objects
             let fiveDate = $("<p>");
@@ -156,15 +160,34 @@ $(document).ready(function () {
             fiveWind.text("Wind: " + fiveDayData[i].wind + "mph");
             fiveHumidity.text("Humidity: " + fiveDayData[i].humidity + "%");
 
-            dayDiv.append(fiveDate);
+            fiveDate.addClass("card-header-title");
+            fiveIcon.addClass("content");
+            fiveTemp.addClass("content");
+            fiveWind.addClass("content");
+            fiveHumidity.addClass("content");
+
+            cardHeader.append(fiveDate);
             dayDiv.append(fiveIcon);
             dayDiv.append(fiveTemp);
             dayDiv.append(fiveWind);
             dayDiv.append(fiveHumidity);
-            weatherCard.append(dayDiv);
+            fiveDay.append(dayDiv);
           }
         });
       }
     });
   };
+
+  for (i = 0; i < localStorage.length; i++) {
+    let cityBtn = $("<button>");
+    cityBtn.text(JSON.parse(localStorage.city));
+    cityBtn.addClass("cityBtn");
+    weatherCard.prepend(cityBtn);
+  }
+
+  $(".cityBtn").click(function () {
+    cityName = $(this)[0].innerText;
+    console.log(cityName);
+    getCoordinates(cityName);
+  });
 });

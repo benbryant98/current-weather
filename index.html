@@ -6,29 +6,42 @@
     <title>What's The Weather?</title>
     <!-- Placeholder for font -->
     <!-- <link href="#" rel="stylesheet" /> -->
-    <link rel="stylesheet" type="css" href="./assets/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/styles.css" />
   </head>
 
   <body>
     <h1>What's the Weather?</h1>
-    <div class="card">
+    <div class="">
       <h2>City:</h2>
       <form id="search-form" class="form">
         <input
           id="city-input"
-          class="form-input"
+          class="form-input column input is-link is-one-third"
           type="text"
           placeholder="Richmond"
         />
-        <button type="submit">Search</button>
+        <button class="button is-link" type="submit">Search</button>
       </form>
     </div>
 
-    <div id="weather-card">
-      <div id="current-weather"></div>
-      <div id="five-day"></div>
+    <div id="weather-card" class="">
+      <div id="current-weather" class="box"></div>
+      <div id="five-day" class="card container">
+        <header class="card-header"></header>
+        <div class="card-content">
+          
+        </div>
+      </div>
     </div>
   </body>
-  <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+    integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+    crossorigin="anonymous"
+  ></script>
   <script src="./assets/script.js"></script>
 </html>
