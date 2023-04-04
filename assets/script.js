@@ -32,7 +32,7 @@ $(document).ready(function () {
           cityLon = data[0].lon;
           getCurrentWeather(cityLat, cityLon, cityName);
           getFiveDay();
-          localStorage.setItem(cityName, JSON.stringify(cityName));
+          localStorage.setItem("city", JSON.stringify(cityName));
         });
       } else {
         alert("Error: " + response.statusText);
