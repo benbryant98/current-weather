@@ -20,7 +20,7 @@ $(document).ready(function () {
   // converts city name string into coordinates using openweathermap geolocation API
   var getCoordinates = function (cityName) {
     let apiCoord =
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      "https://api.openweathermap.org/geo/1.0/direct?q=" +
       cityName +
       "&appid=b87e30ca575aaba2c00121e487cdcd6c";
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
           // set text to data value from weather API response
           iconData.attr(
             "src",
-            "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+            "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
           );
           tempData.text(
             "Temperature: " + data.main.temp.toString().slice(0, 2) + "\u00b0F"
@@ -154,7 +154,7 @@ $(document).ready(function () {
             );
             fiveIcon.attr(
               "src",
-              "http://openweathermap.org/img/w/" + fiveDayData[i].icon + ".png"
+              "https://openweathermap.org/img/w/" + fiveDayData[i].icon + ".png"
             );
             fiveTemp.text("Temp: " + fiveDayData[i].temp + "\u00b0F");
             fiveWind.text("Wind: " + fiveDayData[i].wind + "mph");
